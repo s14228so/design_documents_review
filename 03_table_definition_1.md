@@ -13,40 +13,52 @@
 ## 全体
 - idカラムが無い。
 - テーブル名の最初の文字が大文字になっている。
-- モデル名の記載がない。
+- テーブル名と同じワードを含むカラム名は改名する必要がある。
 
 ## admins
 - テーブル名はadmins
 - 管理者IDのカラム名は「admin_id」ではなく「id」。
+- 管理者idカラムのPKに○が必要。
 
 ## users
 - ユーザIDのカラム名は「user_id」ではなく「id」。
 - 「user_f_name、user_f_kana」が空欄で登録されてしまう。
 - 名前で検索できるようにするなら「user_f_name、user_l_name、user_f_kana、user_l_kana」にindexを付けるべき。
-- 退会ステータスのtrueとfalseがどっちが退会を意味しているかわかりづらいので備考に書くべき。
+- 「user_f_name、user_l_name、user_f_kana、user_l_kana」に関して、lやfのように略さず、last、firstと記述するべき。
+- 退会ステータスのtrueとfalseがどっちが退会を意味しているかわかりづらいので備考に書くべき。さらにデータ型はBooleanが適切。
 - 配送先住所カラムと住所カラムの使い分けがわからない。配送先を複数登録したい場合もあるので配送先住所テーブルを作るべき。
+- 電話番号や郵便番号のデータ型はstringが適切。integerだと0から始まる数列を正しく認識できない。
 
 ## products
 - 商品IDのカラム名は「product_id」ではなく「id」。
 - 商品画像、refile使うのだったらカラム名は「cd_image_id」でデータ型はinteger。
 - 発売日カラムが必要
 - genre_id、artist_id、label_idはFK。
+- stock_statusは在庫数がわかればわかるので不要。
+- stockは（入荷数 - 購買数）で計算できるので不要。
 
 ## discs
-- ディスクナンバーを記録したいので、カラム名の「track_num」は不適切。
+- ディスクの順番を記録したいので、カラム名の「track_num」は不適切。orderやdisc_numberなどが適切。
 
 ## songs
 - disc_idのautoincrementは◯では無い。
+- songカラムが曲名をもたせるのに、integerとなってる。
+- songカラムが曲名を持つなら、カラム名はnameが適切。
 
 ## labels
 - products_idカラムは必要ない。
+- labelカラムがレーベル名を持つなら、カラム名はnameが適切。
 
 ## artists
 - products_idカラムは必要ない。
+- artistsカラムがアーティスト名を持つなら、カラム名はnameが適切。
+- artistsカラムがアーティスト名を持たせるのに、integerとなっている。
 
 ## genres
 - テーブル名はgenres
 - products_idカラムは必要ない。
+- genreカラムがジャンル名を持つなら、カラム名はnameが適切。
+- genreカラムがジャンル名を持たせるのに、integerとなっている。
 
 ## cart_items
 - テーブル名はcart_items
@@ -56,14 +68,18 @@
 - subtotalカラムは必要ない。
 
 ## buy_details
-- テーブル名はbuy_details
+- テーブル名の単語と単語の間にアンダーバーがない。
+- テーブル名はoreder_detailsが適切。それに伴い、カラム名もbuy_numからorder_num、order_amount、amountなどに変更。
 - buy_details_idではなくid
-- buy numではなくbuy_num
 
 ## buys
-- テーブル名はbuys
+- テーブル名は複数形。
+- テーブル名はorderが適切。
 - buy_idではなくid
 - 購入日は時間は必要ないのでデータ型はdateが適切。
+- 郵便番号と住所のカラムが必要。
+- 支払い方法カラムはpaymentが適切。また、enumを使用するためデータ型はintegerが適切。
+- 支払い合計カラムのカラム名が不適切。priceなどが適切。
 
 
 
