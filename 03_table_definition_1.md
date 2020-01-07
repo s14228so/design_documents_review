@@ -39,6 +39,7 @@
 
 ## discs
 - ディスクの順番を記録したいので、カラム名の「track_num」は不適切。orderやdisc_numberなどが適切。
+- 複数枚組を考慮してない。
 
 ## songs
 - disc_idのautoincrementは◯では無い。
