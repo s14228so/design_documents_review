@@ -34,10 +34,12 @@
 
 ## discs
 - ディスクnoカラムはnumだとわかりにくいのでorderなどにした方がいい。
+- FKのproducts_idは単数形になるため、product_idが正しい
 
 ## songs
 - 曲名idにindexは不要。
 - track_numだと意味が不明瞭なので、track_numberやorderに変更するべき。
+- songカラムに曲名が入るならnameが適切。
 
 ## labels
 - labelカラムがレーベル名を持つなら、カラム名はnameが適切。
@@ -52,6 +54,7 @@
 - テーブル名の単語と単語の間にアンダーバーが無い。
 - カラム名の単語と単語の間にアンダーバーが無い。
 - buy_numでは意味が不明瞭なのでamountなどに変更するべき。
+- FKのproducts_idは単数形になるため、product_idが正しい
 
 ## sell_details
 - テーブル名は受注詳細を表すorders_detailsが適切。（動詞は不適切）
@@ -66,6 +69,7 @@
 - 配達状況を保存するカラムが無い。
 - 郵便番号カラムはpostal_codeなどが適切。
 - ship_nameは意味が不明瞭なのでreceiver（受取人）が適切。
+- total（支払い合計）はpriceが適切。
 
 
 
