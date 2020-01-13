@@ -36,6 +36,7 @@
 ## Songs
 - songカラムが曲名をもつならば命名はnameなどとするべき。
 - songカラムが曲名をもたせるのに、integerとなってる。
+- 曲順を管理するカラムがない。
 
 ## Labels
 - product_idは不要。
